@@ -1,12 +1,5 @@
-export class pokeGatchi {
-  constructor() {
-    this.evolution = 1;
-    this.level = 1;
-  }
-
+export class pokeGatchiService {
   async getPokemon(name) {
-    console.log(`in`);
-    
     try {
       let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
       let jsonifiedResponse;
@@ -24,12 +17,25 @@ export class pokeGatchi {
   }
 }
 
+export class pokeGatchi {
+  constructor(type){
+    this.level = 1;
+    this.type = type;
+    this.life = 100;
+    this.hunger = 0;
+  }
+  async makeHunger() {
+    while (this.hunger < 100) {
+        let end = Math.ceil(Math.random() * 10000);
+        setTimeout(() => { this.hunger += (5 + this.level*.5);}, end);
+        await new Promise(resolve => setTimeout(resolve, end));
+        console.log(this.hunger)
+        this.level += 1;
+    }
+  }
 
-//import getAPI from "./APIcaller.js'"
+}
 
-//class
-//constructor() {
- // getAPI(this.name) 
-//}
 
-//https://pokeapi.co/api/v2/pokemon/5/
+
+
