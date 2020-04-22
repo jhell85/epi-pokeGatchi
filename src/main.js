@@ -1,26 +1,25 @@
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles.css';
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles.css";
 import $ from "jquery";
 import { pokeGatchiService, pokeGatchi } from "./pokeGatchi.js";
 
-$(document).ready(function(){
-  $("#pokemon-selection img").click(function() {
+$(document).ready(function () {
+  $("#pokemon-selection img").click(function () {
     let pokeName = this.id;
-    $("#pokemon-selection img").animate({width: "0", height: "0" }, 1000);
-    $(this).animate({margin:"auto", width: "10vw", height: "20vh"}, 2000);
+    $("#pokemon-selection img").animate({ width: "0", height: "0" }, 1000);
+    $(this).animate({ margin: "auto", width: "10vw", height: "20vh" }, 2000);
     (async () => {
       let pokemonData = new pokeGatchiService();
-      console.log(pokeName)
+      console.log(pokeName);
       const response = await pokemonData.getPokemon(pokeName);
-      console.log(response)
+      console.log(response);
     })();
-    let pokegatchi = new pokeGatchi(pokeName) 
-    pokegatchi.makeHunger()
-  })
-})
-
-
+    let pokegatchi = new pokeGatchi(pokeName);
+    pokegatchi.makeHunger();
+    pokegatchi.startLevel();
+  });
+});
 
 // bulbasaur gif : https://projectpokemon.org/images/normal-sprite/bulbasaur.gif
 // ivysaur: https://projectpokemon.org/images/normal-sprite/ivysaur.gif
