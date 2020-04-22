@@ -16,10 +16,11 @@ export class pokeGatchiService {
 }
 
 export class pokeGatchi {
-  constructor(type) {
+  constructor(name) {
+    this.name = name;
     this.levelTimer = 9000;
     this.level = 1;
-    this.type = type;
+    this.type = 0;
     this.life = 100;
     this.hunger = 0;
     this.hungerLevelDelay = 0;
@@ -34,6 +35,33 @@ export class pokeGatchi {
 
       await new Promise((resolve) => setTimeout(resolve, this.levelTimer));
       console.log(`levelTimer: ${this.levelTimer} level: ${this.level}`);
+      if (this.level == 10) {
+
+        switch(this.name) {
+          case "charmander":
+            this.name = "charmeleon";
+            break;
+          case "bulbasaur":
+            this.name = "ivysaur";
+            break;
+          case "squirtle":
+            this.name = "wartortle";
+            break;
+        }
+      }
+      if (this.level == 36) {
+        switch(this.name) {
+          case "charmeleon":
+            this.name = "charizard";
+            break;
+          case "ivysaur":
+            this.name = "venusaur";
+            break;
+          case "wartortle":
+            this.name = "blastoise";
+            break;
+        }
+      }
     }
   }
   async makeHunger() {
