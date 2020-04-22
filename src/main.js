@@ -2,21 +2,19 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from "jquery";
-// import { getAPI } from "./apiCall.js";
-//import { pokeGatchi } from "./pokeGatchi.js";
+import { pokeGatchi } from "./pokeGatchi.js";
 
 $(document).ready(function(){
   $("#pokemon-selection img").click(function() {
     let pokeName = this.id;
-
-    // .attr("id");
-
-    // event.target.value
-    
-    //let pokemon = new pokeGatchi(pokeName);
-
-
-    console.log(pokeName)
+    $("#pokemon-selection img").animate({width: "0", height: "0" }, 1000);
+    (async () => {
+      let pokemon = new pokeGatchi();
+      console.log(pokeName)
+      const response = await pokemon.getPokemon(pokeName);
+      
+      console.log(response)
+    })();
   })
 })
 

@@ -19,9 +19,9 @@ plugins: [
   new CleanWebpackPlugin(),
   new Dotenv(),
   new HtmlWebpackPlugin({
-    title: 'Ping Pong',
+    title: 'pokeGatchi',
     template: './src/index.html',
-    inject: 'body'
+    inject: 'body',
   })
 ],
 module: {
