@@ -6,3 +6,8 @@ height: auto;
   display: flex;
   align-items: center;
 }
+
+#map {
+  height: 30vh;
+  width: 30vw;
+}

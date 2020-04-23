@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-console */
 export class pokeGatchiService {
   async getPokemon(name) {
     try {
@@ -27,7 +29,7 @@ export class pokeGatchi {
   }
   async startLevel() {
     while (this.level < 99) {
-      this.levelTimer = 1000 + (this.level * 500) + (this.hungerLevelDelay * 500);
+      this.levelTimer = 1000 + this.level * 500 + this.hungerLevelDelay * 500;
       this.hungerLevelDelay = 0;
       setTimeout(() => {
         this.level += 1;
@@ -36,8 +38,7 @@ export class pokeGatchi {
       await new Promise((resolve) => setTimeout(resolve, this.levelTimer));
       console.log(`levelTimer: ${this.levelTimer} level: ${this.level}`);
       if (this.level == 10) {
-
-        switch(this.name) {
+        switch (this.name) {
           case "charmander":
             this.name = "charmeleon";
             break;
@@ -50,7 +51,7 @@ export class pokeGatchi {
         }
       }
       if (this.level == 36) {
-        switch(this.name) {
+        switch (this.name) {
           case "charmeleon":
             this.name = "charizard";
             break;
@@ -84,7 +85,7 @@ export class pokeGatchi {
   checkIfDead() {
     if (this.life === 0) {
       // make all buttons unclickable and display to the user the game over screen what level they made it to ect...
-      console.log("You died")
+      console.log("You died");
     }
   }
 }

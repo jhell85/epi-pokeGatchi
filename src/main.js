@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-console */
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
@@ -5,8 +7,11 @@ import $ from "jquery";
 import { pokeGatchiService, pokeGatchi } from "./pokeGatchi.js";
 
 
+
+
 $(document).ready(function () {
- 
+
+
   $("#pokemon-selection img").click(function () {
     let pokeName = this.id;
     $("#pokemon-selection img").animate({ width: "0", height: "0" }, 1000);
@@ -29,11 +34,11 @@ function showEvolution(pokegatchi) {
     if (pokegatchi.name != currentName) {
       switch (pokegatchi.name) {
         case "charmander":
-            $("#ourgif").attr(
-              "src",
-              "https://projectpokemon.org/images/normal-sprite/charmander.gif"
-            );
-            $("#ourgif").fadeIn();
+          $("#ourgif").attr(
+            "src",
+            "https://projectpokemon.org/images/normal-sprite/charmander.gif"
+          );
+          $("#ourgif").fadeIn();
           currentName = pokegatchi.name;
           break;
         case "charmeleon":
@@ -112,5 +117,3 @@ function showEvolution(pokegatchi) {
     }
   }, 3000);
 }
-
-
