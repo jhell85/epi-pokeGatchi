@@ -4,8 +4,8 @@
 /* eslint-disable no-unused-vars */
 
 
-export function runAPIcall() {
-	fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GDXJ&interval=5min&apikey=${process.env.ALPHAVANTAGE}`)
+export function runAPIcall(stockSymbol, interval) {
+	fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockSymbol}&interval=${interval}min&apikey=${process.env.ALPHAVANTAGE}`)
 		.then(function(response) {
 			if (response.ok && response.status == 200) {
 				return response.json();
@@ -19,7 +19,15 @@ export function runAPIcall() {
 	return false;
 	})
 	.then(function(jsonifiedResponse) {
-		console.log(jsonifiedResponse);
+		let intervals = jsonifiedResponse[`Time Series (${interval}min)`];
+
+		for (const timeStamp in intervals) {
+      for(const pair in intervals[timeStamp]){
+        console.log(`${timeStamp} : ${pair} : ${intervals[timeStamp][pair]}`);
+      }
+	}
+
+
+
 	});
 }
-

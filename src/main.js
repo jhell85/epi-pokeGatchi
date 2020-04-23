@@ -12,7 +12,9 @@ import { runAPIcall } from "./runAPI.js"
 
 $(document).ready(function () {
 
-    runAPIcall();
+  $("#submit").click(function(){
+    runAPIcall($("#symbol").val(), $("#interval").val());
+  });
 
   $("#pokemon-selection img").click(function () {
     let pokeName = this.id;
