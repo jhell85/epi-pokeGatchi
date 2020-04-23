@@ -5,12 +5,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 import $ from "jquery";
 import { pokeGatchiService, pokeGatchi } from "./pokeGatchi.js";
+import { runAPIcall } from "./runAPI.js"
 
 
 
 
 $(document).ready(function () {
 
+    runAPIcall();
 
   $("#pokemon-selection img").click(function () {
     let pokeName = this.id;
